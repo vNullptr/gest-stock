@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/navbar'
+import Dashboard from '../compact-pages/dashboard'
 import {homeIcon, inventoryIcon, shopIcon, userIcon, supplierIcon} from '../assets/icons/index'
 
-const Dashboard = () => {
+const Main = () => {
 
   const [currentPage, setcurrentPage] = useState(0)
     const pages = [
@@ -16,10 +17,17 @@ const Dashboard = () => {
 
   return (
     <div className="flex flex-row">
-      <homeIcon/>
       <Navbar pageList={pages} page={currentPage} changePage={setcurrentPage} />
+      <div className="flex flex-col w-full h-screen">
+          <div className="flex-1 "></div> 
+          <div className="flex-9 px-5">
+            <div className="bg-white rounded-t-[15px] w-full h-full shadow-[5px_5px_25px_rgba(0,0,0,0.08)]">
+              <Dashboard/>
+            </div>
+          </div>
+      </div>
     </div>
   )
 }
 
-export default Dashboard
+export default Main
