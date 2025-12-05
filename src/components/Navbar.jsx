@@ -10,8 +10,8 @@ const Navbar = (props) => {
     }
 
   return (
-    <div className="bg-white min-h-screen min-w-[200px] shadow-[5px_5px_25px_rgba(0,0,0,0.02)]">
-        <div className="border-1 border-[rgb(60,60,60)] w-[30px] h-[30px] mb-[20px] m-[5px]"></div>
+    <div className="bg-white min-h-screen min-w-[200px] shadow-[5px_5px_25px_5px_rgba(0,0,0,0.02)]">
+        <div className="border-1 border-[rgb(60,60,60)] w-[30px] h-[30px] mb-5 m-[5px]"></div>
         {props.pageList.map((e, index) => {
             const Icon = e.icon
             return (
