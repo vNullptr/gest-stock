@@ -11,7 +11,7 @@ const Navbar = (props) => {
 
     return (
         <div className="bg-white min-h-screen min-w-[150px]">
-        <div className="border-1 border-accent w-[30px] h-[30px] mb-5 m-[5px]"></div>
+        <div className="border border-accent w-[30px] h-[30px] mb-5 m-[5px]"></div>
         {props.pageList.map((e, index) => {
             const Icon = e.icon
             return (
