@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary : rgba(204,102,0,1);
+  --color-secondary: rgba(243,245,249,1);
+  --color-accent: rgba(60,60,60,1);
+}
+
 :root{
   background-color: rgb(245,245,245);
 }
