@@ -30,8 +30,8 @@ const Main = () => {
     <div className="flex flex-row">
       <Navbar pageList={pages} page={currentPage} changePage={setcurrentPage} />
       <div className="flex flex-col w-full h-screen">
-          <div className="flex-1 "></div> 
-          <div className="flex-9 p-5">
+          <div className="h-1/10"></div> 
+          <div className="h-9/10 p-5">
             <div className="bg-tertiary rounded-[10px] w-full h-full shadow-[5px_5px_25px_5px_rgba(0,0,0,0.02)] overflow-hidden">
               <PageComponent/>
             </div>

@@ -1,90 +1,34 @@
 import React from 'react'
 
 const Table = ({tableHead, rowData}) => {
+
+  const listElements = []
+  for (let i = 0; i < 25; i++) {
+    listElements.push(
+    <tr className="[&>td]:p-2 [&>td]:text-left [&>td]:font-light [&>td]:text-sm shadow-sm h-15">
+      <td>Data</td>
+      <td>Data</td>
+      <td>Data</td>
+      <td>Data</td>
+    </tr>)
+  }
+
   return (
     <>
-      <div className="flex flex-col w-full max-h-[700px] px-2 overflow-y-scroll rounded-[10px] [&>div]:rounded-[10px] gap-3 [&>div]:shadow-[0_0_0_1px_rgba(0,0,0,0.06)] i [&>div]:border-secondary">
-        <div className="w-full min-h-10 bg-white rounded-t-[10px] sticky top-0 z-30 mt-1">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
-        <div className="w-full min-h-20 bg-white rounded-t-[10px]">
-          <div></div>
-        </div>
+      <div className='overflow-scroll'>
+        <table className='bg-white w-full rounded-lg select-none border-separate border-spacing-5'>
+          <thead className="bg-white">
+            <tr className=" [&>td]:p-2 [&>td]:font-bold [&>td]:text-left [&>td]:text-sm">
+              <td>Head</td>
+              <td>Head</td>
+              <td>Head</td>
+              <td>Head</td>
+            </tr>
+          </thead>
+          <tbody className="">
+            {listElements}
+          </tbody>
+        </table>
       </div>
     </>
   )
