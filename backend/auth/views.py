@@ -6,6 +6,7 @@ from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
+from accounts.serializers import StaffSerializer
 
 @api_view(["POST"])
 @permission_classes([AllowAny])
@@ -46,3 +47,9 @@ def signup(request):
     return Response({
         "detail" : "Bad request"
     }, status=status.HTTP_400_BAD_REQUEST)
+    
+    
+@api_view(["GET"])
+def check(request):
+    serializer = StaffSerializer(request.user)
+    return Response(serializer.data)
