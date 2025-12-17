@@ -4,4 +4,4 @@ from accounts.models import Staff
 class StaffSerializer(serializers.ModelSerializer):
     class Meta:
         model = Staff
-        fields = '__all__'
+        fields = ["id", "username", "role"]
