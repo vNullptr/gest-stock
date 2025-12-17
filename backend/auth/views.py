@@ -1,12 +1,14 @@
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
 from .serializers import AuthSerializer, AuthLoginSerializer
 from accounts.models import Staff
-from django.contrib.auth.hashers import check_password, make_password
+from django.contrib.auth.hashers import check_password
 from rest_framework import status
 from rest_framework.authtoken.models import Token
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
 
 @api_view(["POST"])
+@permission_classes([AllowAny])
 def signin(request):
     serializer = AuthLoginSerializer(data=request.data)
     if serializer.is_valid():
@@ -28,6 +30,7 @@ def signin(request):
     }, status=status.HTTP_400_BAD_REQUEST)
     
 @api_view(["POST"])
+@permission_classes([AllowAny])
 def signup(request):
     serializer = AuthSerializer(data=request.data)
     if serializer.is_valid():
