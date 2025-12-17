@@ -53,3 +53,12 @@ def signup(request):
 def check(request):
     serializer = StaffSerializer(request.user)
     return Response(serializer.data)
+
+@api_view(["POST"])
+def logout(request):
+    request.user.auth_token.delete()
+    return Response({
+        "details":"Logged out!"
+        },
+        status=status.HTTP_200_OK
+    )
