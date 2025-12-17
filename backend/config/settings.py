@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ag(ju7q1ogxi)to*$+yjng(a7pvwv@9yyvuv@le5s73h&(473w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     
     "rest_framework",
     "rest_framework.authtoken",
+    "corsheaders",
     
     "accounts",
     "order",
@@ -48,7 +49,12 @@ INSTALLED_APPS = [
     
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
