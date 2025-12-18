@@ -7,6 +7,7 @@ const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [wrongCredit, setwrongCredit] = useState(false)
+  const [errorMessage, seterrorMessage] = useState('')
   const navigate = useNavigate()
 
   const login = async (username, password)=>{
@@ -22,12 +23,14 @@ const Login = () => {
       if (err.response) {
         console.log("Server responded with error:", err.response.status)
         if (err.response.status === 401 || err.response.status === 422) {
-          setwrongCredit(true)
+          seterrorMessage("Mots de passe ou nom d'utilisateur incorrecte")
         }
       } else if (err.request) {
         console.log("No response received")
+        seterrorMessage("Probleme lier au serveur reessayer ulterieurement")
       } else {
         console.log("Error setting up request:", err.message)
+        seterrorMessage("Probleme lier au serveur reessayer ulterieurement")
       }
     } finally {
       setUsername("")
@@ -47,7 +50,7 @@ const Login = () => {
             >
               <input className="border border-gray-300 outline-0 rounded-[3px] p-[3px] focus:border-primary " onChange={(e)=>{ setUsername(e.target.value); setwrongCredit(false) }} value={username} type="text" placeholder="Nom d'utilisateur"></input>
               <input className="border border-gray-300 outline-0 rounded-[3px] p-[3px] focus:border-primary " onChange={(e)=>{ setPassword(e.target.value); setwrongCredit(false) }} value={password} type="password" placeholder='Mots de passe'></input>
-              {wrongCredit && <p className='font-extralight text-[.8em] text-red-500'>Nom d'utilisateur ou mots de passe invalide.</p>}
+              {(errorMessage.length > 0) && <p className='font-extralight text-[.8em] text-red-500'>{errorMessage}</p>}
               <button className="p-[7px] bg-primary rounded-[5px] text-white font-semibold text-md shadow-md hover:bg-[#ff9900] transition-all duration-200" type="submit">Login</button>
             </form>
         </div>
