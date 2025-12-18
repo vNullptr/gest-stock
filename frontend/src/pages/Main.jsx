@@ -1,10 +1,32 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/navbar'
 import Dashboard from '../compact-pages/dashboard'
 import Inventory from '../compact-pages/inventory'
 import {homeIcon, inventoryIcon, shopIcon, userIcon, supplierIcon} from '../assets/icons/index'
+import api from '../api/axios'
+import {useNavigate} from 'react-router-dom'
 
 const Main = () => {
+
+  const navigate = useNavigate()
+
+  const check = async () => {
+      const token = sessionStorage.getItem("session-token")
+      if (token) {
+        try {
+          const response = await api(token).get('/auth/check')
+        } catch (err){
+          console.log("Invalid Token")
+          navigate('/login')
+        }
+      } else {
+        navigate('/login')
+      }
+  }
+
+  useEffect(()=>{
+    check()
+  }, [])
 
   const [currentPage, setcurrentPage] = useState(0)
     const pages = [
@@ -24,6 +46,7 @@ const Main = () => {
     )
 
     const PageComponent = compactPages[currentPage] ?? Placeholder
+
 
 
   return (

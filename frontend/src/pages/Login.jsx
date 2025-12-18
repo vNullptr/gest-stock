@@ -18,7 +18,7 @@ const Login = () => {
       })
 
       sessionStorage.setItem("session-token",response.data.token)
-      navigate("/main")
+      navigate("/")
     } catch (err){
       if (err.response) {
         console.log("Server responded with error:", err.response.status)
