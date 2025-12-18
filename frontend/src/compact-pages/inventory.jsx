@@ -6,22 +6,37 @@ const Inventory = () => {
 
   const windowContent = () => (
     <div className="w-full h-full p-5 flex flex-col w-full">
-      <h1 className="text-4xl font-bold ">Edit</h1>
-      <div className="w-full h-full flex py-5 items-between justify-center">
+      <div className="w-full h-full flex flex-col py-5 items-center">
+        
         <form className="flex flex-col w-[80%]">
-          <label className="flex flex-col w-full">
-            test1
+          <h1 className="text-3xl mb-7 text-primary">Modifier</h1>
+          <div className="w-full flex flex-col">
+            <label className="font-extralight text-sm">Nom produit</label>
             <input className="outline outline-gray-300 rounded-sm h-8 mb-5 "></input>
-          </label>
-          <div className="flex flex-row">
-            <label className="flex flex-col w-1/2 mr-5">
-              test2
+          </div>
+
+          <div className="w-full flex flex-col">
+            <label className="font-extralight text-sm">Categorie</label>
+            <select className="outline outline-gray-300 rounded-sm h-8 mb-5">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </div>
+
+          <div className="flex flex-row justify-between">
+            <div>
+              <label className="font-extralight text-sm">Prix</label>
               <input className="outline outline-gray-300 rounded-sm h-8 w-full mb-5 "></input>
-            </label>
-            <label className="flex flex-col w-1/2">
-              test3
+            </div>
+            <div>
+              <label className="font-extralight text-sm">Quantite</label>
               <input className="outline outline-gray-300 rounded-sm h-8 w-full mb-5 "></input>
-            </label>
+            </div>
+          </div>
+          <div className="w-full h-13 flex flex-row items-center justify-end space-x-2 mt-5">
+            <button className="rounded-md ring text-primary  h-8 w-20 ring-primary">Annuler</button>
+            <button className="rounded-md bg-primary text-white  h-8 w-20">Appliquer</button>
           </div>
         </form>
       </div>

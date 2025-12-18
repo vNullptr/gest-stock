@@ -10,7 +10,7 @@ const Window = ({WindowContent}) => {
         
     return (
         <div className="absolute top-0 left-0 w-screen h-screen bg-[rgba(0,0,0,0.3)] flex items-center justify-center ">
-            <div className="w-[650px] h-5/6 bg-white rounded-lg overflow-hidden">
+            <div className="w-[650px] bg-white rounded-lg overflow-hidden">
                 <Content/>
             </div>
         </div>
