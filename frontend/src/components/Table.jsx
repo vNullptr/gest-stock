@@ -12,7 +12,7 @@ const Table = ({Headers, Data, editHandler}) => {
           <thead className="">
             <tr className="[&>td]:px-5 text-sm font-bold text-left text-gray-600 h-10">
               {Headers.map((v)=>{
-                return <td key={v.key} className={`w-[${v.width}%]`}>{v.label}</td>
+                return <td key={v?.key} className={`w-[${v?.width}%]`}>{v?.label}</td>
               })}
               <td></td>
             </tr>
@@ -23,11 +23,19 @@ const Table = ({Headers, Data, editHandler}) => {
                 return (
                   <tr key={i} className="[&>td]:px-5 text-sm text-left text-gray-500 border-t border-gray-200 h-10" onMouseEnter={()=>setHovered(i)} onMouseLeave={()=>setHovered(null)}>
                   {Headers.map((header)=>{
-                    return <td>{row[header.key]}</td>
+                    if (header?.tag) {
+                      return (
+                      <td>
+                        <div className="bg-gray-100 text-center rounded-md font-bold px-2">{row?.[header?.key]}</div>
+                      </td>)
+                    } else {
+                      return <td className={header?.style}>{row?.[header?.key]}</td>
+                    }
+                    
                   })}
                   <td>
                     <div className="flex flex-row justify-end items-center">
-                      <button className={`w-6 h-6 ${Hovered == i ? "" : "opacity-0"}`} onClick={()=>{editHandler(row["id"])}}>
+                      <button className={`w-6 h-6 ${Hovered == i ? "" : "opacity-0"}`} onClick={()=>{editHandler(row?.id)}}>
                         <div className="hover:scale-120 transition-all transition-500 p-1 rounded-full">
                           <Dots className="text-gray-500 text-right"/>
                         </div>
