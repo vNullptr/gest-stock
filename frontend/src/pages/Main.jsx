@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../components/navbar'
+import Navbar from '../components/Navbar'
 import Dashboard from '../compact-pages/dashboard'
 import Inventory from '../compact-pages/inventory'
 import {homeIcon, inventoryIcon, shopIcon, userIcon, supplierIcon} from '../assets/icons/index'
@@ -32,8 +32,8 @@ const Main = () => {
     const pages = [
       {name:"Tableau de bord", icon:homeIcon},
       {name:"Inventaire", icon:inventoryIcon},
-      {name:"Personnels", icon:shopIcon},
-      {name:"Magasins", icon:userIcon},
+      {name:"Personnels", icon:userIcon},
+      {name:"Magasins", icon:shopIcon},
       {name:"Fournisseur", icon:supplierIcon},
     ]
     const compactPages = [
