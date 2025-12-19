@@ -32,6 +32,10 @@ const EditForm = ({currentProductId, onClose}) => {
 
   },[])
 
+  const clickHandler = ()=>{
+
+  }
+
   return (
     <div className="w-full h-full p-5 flex flex-col">
       <div className="w-full h-full flex flex-col py-5 items-center">
@@ -66,7 +70,7 @@ const EditForm = ({currentProductId, onClose}) => {
           </div>
           <div className="w-full h-13 flex flex-row items-center justify-end space-x-2 mt-5">
             <button className="rounded-md ring text-primary  h-8 w-20 ring-primary hover:scale-105 transition-all duration-200" onClick={onClose}>Annuler</button>
-            <button className="rounded-md bg-primary text-white  h-8 w-20 hover:scale-105 transition-all duration-200">Appliquer</button>
+            <button className="rounded-md bg-primary text-white  h-8 w-20 hover:bg-[#ff9900] hover:scale-105 transition-all duration-200" onClick={clickHandler}>Appliquer</button>
           </div>
         </form>
       </div>
