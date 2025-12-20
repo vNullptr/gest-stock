@@ -7,7 +7,7 @@ const Table = ({Headers, Data, editHandler}) => {
 
   return (
     <>
-      <div className="overflow-scroll bg-white p-6">
+      <div className="overflow-scroll bg-white p-2">
         <table className="w-full rounded-lg select-none">
           <thead className="">
             <tr className="[&>td]:px-5 text-sm font-bold text-left text-gray-600 h-10">
