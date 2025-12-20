@@ -14,6 +14,7 @@ const EditForm = ({currentProductId, onClose}) => {
         try {
           const prodResponse = await api(token).get(`/api/products/${currentProductId}`)
           setProduct(prodResponse.data)
+          
           const catResponse = await api(token).get(`/api/categories`)
           setCategories(catResponse.data)
 
@@ -67,8 +68,8 @@ const EditForm = ({currentProductId, onClose}) => {
           </div>
 
           <div className="w-full flex flex-col">
-            <label className="font-extralight text-sm">Categorie</label>
-            <select className="outline outline-gray-300 rounded-sm h-8 mb-5 p-2" onChange={(e)=>{setProduct(prev=>({...prev, category:Categories.find(cat => cat?.name === e.target.value)?.id }))}}>
+            <label className="font-extralight text-sm">Catégorie</label>
+            <select className="outline outline-gray-300 rounded-sm h-8 mb-5" onChange={(e)=>{setProduct(prev=>({...prev, category:Categories.find(cat => cat?.name === e.target.value)?.id }))}}>
               <option>{Categories.length > 0 && Product?.category && (Categories.find((v, i)=> v?.id == Product?.category)?.name)}</option>
               {Categories.map((cat, k)=>{
                 return cat?.id != Product?.category && (<option>{cat?.name}</option>)
@@ -82,7 +83,7 @@ const EditForm = ({currentProductId, onClose}) => {
               <input className="outline outline-gray-300 rounded-sm h-8 w-full mb-5 p-2" type="number" value={Product?.price} onChange={(e)=>{setProduct(prev => ({...prev, price:e.target.value}))}}></input>
             </div>
             <div>
-              <label className="font-extralight text-sm">Quantite</label>
+              <label className="font-extralight text-sm">Quantité</label>
               <input className="outline outline-gray-300 rounded-sm h-8 w-full mb-5 p-2" type="number" value={Product?.quantity} onChange={(e)=>{setProduct(prev => ({...prev, quantity:e.target.value}))}}></input>
             </div>
           </div>

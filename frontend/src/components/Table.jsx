@@ -12,7 +12,7 @@ const Table = ({Headers, Data, editHandler}) => {
           <thead className="">
             <tr className="[&>td]:px-5 text-sm font-bold text-left text-gray-600 h-10">
               {Headers.map((v)=>{
-                return <td key={v?.key} className={`w-[${v?.width}%]`}>{v?.label}</td>
+                return <td key={v?.key} style={{width: `${v?.width}%`}}>{v?.label}</td>
               })}
               <td></td>
             </tr>
@@ -29,7 +29,7 @@ const Table = ({Headers, Data, editHandler}) => {
                         <div className="bg-gray-100 text-center rounded-md font-bold px-2">{row?.[header?.key]}</div>
                       </td>)
                     } else {
-                      return <td className={header?.style}>{row?.[header?.key]}</td>
+                      return <td>{row?.[header?.key]}</td>
                     }
                     
                   })}
@@ -48,6 +48,7 @@ const Table = ({Headers, Data, editHandler}) => {
             }
           </tbody>
         </table>
+        {Data.length > 0 || <div className="w-full text-center"> Fetching data ... </div>}
       </div>
     </>
   )

@@ -6,7 +6,7 @@ from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
-from accounts.serializers import StaffSerializer
+from accounts.serializers import StaffReadSerializer
 
 @api_view(["POST"])
 @permission_classes([AllowAny])
@@ -51,7 +51,7 @@ def signup(request):
     
 @api_view(["GET"])
 def check(request):
-    serializer = StaffSerializer(request.user)
+    serializer = StaffReadSerializer(request.user)
     return Response(serializer.data)
 
 @api_view(["POST"])

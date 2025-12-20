@@ -5,6 +5,7 @@ import Inventory from '../compact-pages/inventory'
 import {homeIcon, inventoryIcon, shopIcon, userIcon, supplierIcon} from '../assets/icons/index'
 import api from '../api/axios'
 import {useNavigate} from 'react-router-dom'
+import Staff from '../compact-pages/Staff'
 
 const Main = () => {
 
@@ -17,10 +18,10 @@ const Main = () => {
           const response = await api(token).get('/auth/check')
         } catch (err){
           console.log("Invalid Token")
-          navigate('/login')
+          //navigate('/login')
         }
       } else {
-        navigate('/login')
+        //navigate('/login')
       }
   }
 
@@ -38,7 +39,8 @@ const Main = () => {
     ]
     const compactPages = [
       Dashboard,
-      Inventory
+      Inventory,
+      Staff
     ]
 
     const Placeholder = () => (
@@ -53,8 +55,8 @@ const Main = () => {
     <div className="flex flex-row">
       <Navbar pageList={pages} page={currentPage} changePage={setcurrentPage} />
       <div className="flex flex-col w-full h-screen">
-          <div className="h-[5%]"></div> 
-          <div className="h-[95%]">
+          <div className="h-[10%]"></div> 
+          <div className="h-[90%]">
             <div className="bg-tertiary rounded-mdr w-full h-full overflow-hidden">
               <PageComponent/>
             </div>
