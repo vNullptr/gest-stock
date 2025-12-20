@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react'
 import Table from '../components/Table.jsx'
 import Window from '../components/Window.jsx'
 import api from '../api/axios.js'
-import EditForm from '../components/forms/editForm.jsx'
-import AddForm from '../components/forms/addForm.jsx'
+import EditForm from '../components/forms/editProductForm.jsx'
+import AddForm from '../components/forms/addProductForm.jsx'
 
 const Inventory = () => {
 
