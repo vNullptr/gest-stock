@@ -23,14 +23,15 @@ const Table = ({Headers, Data, editHandler}) => {
                 return (
                   <tr key={i} className="[&>td]:px-5 text-sm text-left text-gray-500 border-t border-gray-200 h-10" onMouseEnter={()=>setHovered(i)} onMouseLeave={()=>setHovered(null)}>
                   {Headers.map((header)=>{
-                    if (header?.tag) {
-                      return (
-                      <td>
-                        <div className="bg-gray-100 text-center rounded-md font-bold px-2">{row?.[header?.key]}</div>
-                      </td>)
-                    } else {
-                      return <td>{row?.[header?.key]}</td>
-                    }
+                    return (header?.tag ? 
+                        <td key={header?.key}>
+                            <p key={header?.key} className="rounded-md outline outline-gray-200 w-fit px-1">{row?.[header?.key]}</p> 
+                        </td>
+                    : 
+                        <td key={header?.key}>
+                            <p className='w-fit'>{row?.[header?.key]}</p>
+                        </td>
+                    ) 
                     
                   })}
                   <td>
