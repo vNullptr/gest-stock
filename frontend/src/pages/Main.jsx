@@ -5,6 +5,7 @@ import Inventory from '../compact-pages/inventory'
 import {homeIcon, inventoryIcon, shopIcon, userIcon, supplierIcon} from '../assets/icons/index'
 import api from '../api/axios'
 import {useNavigate} from 'react-router-dom'
+import Staff from '../compact-pages/Staff'
 
 const Main = () => {
 
@@ -17,10 +18,10 @@ const Main = () => {
           const response = await api(token).get('/auth/check')
         } catch (err){
           console.log("Invalid Token")
-          navigate('/login')
+          //navigate('/login')
         }
       } else {
-        navigate('/login')
+        //navigate('/login')
       }
   }
 
@@ -38,7 +39,8 @@ const Main = () => {
     ]
     const compactPages = [
       Dashboard,
-      Inventory
+      Inventory,
+      Staff
     ]
 
     const Placeholder = () => (
