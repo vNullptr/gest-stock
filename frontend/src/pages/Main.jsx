@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
-import Dashboard from '../compact-pages/dashboard'
-import Inventory from '../compact-pages/inventory'
 import {homeIcon, inventoryIcon, shopIcon, userIcon, supplierIcon} from '../assets/icons/index'
 import api from '../api/axios'
 import {useNavigate} from 'react-router-dom'
 import Staff from '../compact-pages/Staff'
+import Dashboard from '../compact-pages/Dashboard'
+import Inventory from '../compact-pages/Inventory'
+import Shop from '../compact-pages/Shop'
 
 const Main = () => {
 
@@ -40,7 +41,8 @@ const Main = () => {
     const compactPages = [
       Dashboard,
       Inventory,
-      Staff
+      Staff,
+      Shop
     ]
 
     const Placeholder = () => (
