@@ -8,7 +8,7 @@ const AddForm = ({onClose}) => {
 
   useEffect(()=>{
 
-    const fetchProduct = async () =>{
+    const fetchCategories = async () =>{
       const token = sessionStorage.getItem("session-token")
       if (token) {
         try {
@@ -25,13 +25,13 @@ const AddForm = ({onClose}) => {
       }
     }
 
-    fetchProduct()
+    fetchCategories()
 
   },[])
 
   const clickHandler = ()=>{
 
-    const patchProduct = async () =>{
+    const postProduct = async () =>{
       const token = sessionStorage.getItem("session-token")
       if (token) {
         try {
@@ -48,7 +48,7 @@ const AddForm = ({onClose}) => {
       }
     }
 
-    patchProduct()
+    postProduct()
   }
 
   return (
@@ -58,14 +58,14 @@ const AddForm = ({onClose}) => {
         <form className="flex flex-col w-[80%]" onSubmit={(e)=>{
           e.preventDefault()
         }}>
-          <h1 className="text-3xl mb-7 text-primary">Modifier</h1>
+          <h1 className="text-3xl mb-7 text-primary">Ajouter</h1>
           <div className="w-full flex flex-col">
             <label className="font-extralight text-sm">Nom produit</label>
             <input className="outline outline-gray-300 rounded-sm h-8 mb-5 p-2" value={Product?.name} onChange={(e)=>{setProduct(prev => ({...prev, name:e.target.value}))}} ></input>
           </div>
 
           <div className="w-full flex flex-col">
-            <label className="font-extralight text-sm">Categorie</label>
+            <label className="font-extralight text-sm">Catégorie</label>
             <select className="outline outline-gray-300 rounded-sm h-8 mb-5 p-2" onChange={(e)=>{setProduct(prev=>({...prev, category:Categories.find(cat => cat?.name === e.target.value)?.id }))}}>
               <option>{Categories.length > 0 && Product?.category && (Categories.find((v, i)=> v?.id == Product?.category)?.name)}</option>
               {Categories.map((cat, k)=>{
@@ -80,7 +80,7 @@ const AddForm = ({onClose}) => {
               <input className="outline outline-gray-300 rounded-sm h-8 w-full mb-5 p-2" type="number" value={Product?.price} onChange={(e)=>{setProduct(prev => ({...prev, price:e.target.value}))}}></input>
             </div>
             <div>
-              <label className="font-extralight text-sm">Quantite</label>
+              <label className="font-extralight text-sm">Quantité</label>
               <input className="outline outline-gray-300 rounded-sm h-8 w-full mb-5 p-2" type="number" value={Product?.quantity} onChange={(e)=>{setProduct(prev => ({...prev, quantity:e.target.value}))}}></input>
             </div>
           </div>
