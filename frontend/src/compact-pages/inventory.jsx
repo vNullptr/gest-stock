@@ -55,10 +55,12 @@ const Inventory = () => {
   return (
     <div className="h-full p-5 flex flex-col">
       <div className="flex flex-row my-3 justify-between">
-        <button className="w-20 h-8 p-1my-3 text-white bg-primary rounded-sm hover:bg-[#ff9900] hover:scale-105 transition-all transition-100" onClick={()=>{setAdding(true)}}>Ajouter</button>
-        <input className="w-60 h-8 p-1 outline outline-gray-200 bg-white rounded-sm" placeholder='Recherche'></input>
+        <button className="w-20 h-8 p-1 shadow-sm text-white bg-primary rounded-sm hover:bg-[#ff9900] hover:scale-105 transition-all transition-100" onClick={()=>{setAdding(true)}}>Ajouter</button>
+        <input className="w-60 h-8 p-1 shadow-sm outline outline-gray-200 bg-white rounded-sm" placeholder='Recherche'></input>
       </div>
-      <Table Headers={productHeader} Data={Products} editHandler={editHandler}/>
+      <div className="rounded-sm shadow-sm bg-white px-1">
+        <Table Headers={productHeader} Data={Products} editHandler={editHandler}/>
+      </div>
       {  selectedProduct != null && 
       <Window>
         <EditForm currentProductId={selectedProduct} onClose={()=>{setselectedProduct(null)}} />
