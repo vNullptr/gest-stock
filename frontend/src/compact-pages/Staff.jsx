@@ -40,7 +40,7 @@ const Staff = () => {
   return (
     <div className='flex flex-col justify-center items-center p-5'>
       <div className="flex flex-row justify-between w-full my-3">
-        <button className="w-20 h-8 p-1my-3 text-white bg-primary rounded-sm hover:bg-[#ff9900] hover:scale-105 transition-all transition-100" onClick={()=>{setAdding(true)}}>Ajouter</button>
+        <button className="w-20 h-8 p-1 shadow-sm text-white bg-primary rounded-sm hover:bg-[#ff9900] hover:scale-105 transition-all transition-100" onClick={()=>{setAdding(true)}}>Ajouter</button>
       </div>
       <List Headers={Headers} Data={StaffList} editHandler={(id)=>{setSelectedStaff(id)}} />
       {  SelectedStaff != null && 
