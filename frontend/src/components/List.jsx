@@ -25,7 +25,7 @@ const List = ({Headers, Data, editHandler}) => {
                     <div className="flex flex-row items-center p-2 pl-5 bg-white h-18 cursor-default" onMouseEnter={()=>setHovered(index)}>
                        {Headers.map((header)=>{
                             return (header?.tag ? 
-                                <div style={{minWidth: `${header?.width}%`, maxWidth: `${header?.width}%`}}>
+                                <div key={header?.key} style={{minWidth: `${header?.width}%`, maxWidth: `${header?.width}%`}}>
                                     <p key={header?.key} className="rounded-md outline outline-gray-200 w-fit px-1">{row?.[header?.key]}</p> 
                                 </div>
                             
