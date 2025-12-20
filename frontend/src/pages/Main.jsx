@@ -55,8 +55,8 @@ const Main = () => {
     <div className="flex flex-row">
       <Navbar pageList={pages} page={currentPage} changePage={setcurrentPage} />
       <div className="flex flex-col w-full h-screen">
-          <div className="h-[5%]"></div> 
-          <div className="h-[95%]">
+          <div className="h-[10%]"></div> 
+          <div className="h-[90%]">
             <div className="bg-tertiary rounded-mdr w-full h-full overflow-hidden">
               <PageComponent/>
             </div>
