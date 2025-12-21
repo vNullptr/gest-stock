@@ -3,6 +3,12 @@ import Dots from "../assets/icons/dotsIcon"
 
 const List = ({Headers, Data, editHandler}) => {
     const [Hovered, setHovered] = useState(null)
+    const Roles = [
+        "Employé",
+        "Responsable",
+        "Gérant"
+    ]
+    
 
   return (
     <div className='flex flex-col w-full space-y-2'>
@@ -26,7 +32,7 @@ const List = ({Headers, Data, editHandler}) => {
                        {Headers.map((header)=>{
                             return (header?.tag ? 
                                 <div key={header?.key} style={{minWidth: `${header?.width}%`, maxWidth: `${header?.width}%`}}>
-                                    <p key={header?.key} className="rounded-md outline outline-gray-200 w-fit px-1">{row?.[header?.key]}</p> 
+                                    <p key={header?.key} className="rounded-md outline outline-gray-200 w-fit px-1">{Roles[row?.[header?.key]]}</p> 
                                 </div>
                             
                             : 
