@@ -7,6 +7,7 @@ import Staff from '../compact-pages/Staff'
 import Dashboard from '../compact-pages/Dashboard'
 import Inventory from '../compact-pages/Inventory'
 import Shop from '../compact-pages/Shop'
+import Supplier from '../compact-pages/Supplier'
 
 const Main = () => {
 
@@ -42,7 +43,8 @@ const Main = () => {
       Dashboard,
       Inventory,
       Staff,
-      Shop
+      Shop,
+      Supplier
     ]
 
     const Placeholder = () => (
