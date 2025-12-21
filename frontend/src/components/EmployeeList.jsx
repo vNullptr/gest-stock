@@ -14,7 +14,6 @@ const EmployeeList = ({SelectedShop}) => {
       if (token) {
         try {
           const response = await api(token).get(`/api/shop/${SelectedShop}/staff`)
-          console.log(response.data)
           setStaffList(response.data)
         } catch (err){
           console.error(err)
