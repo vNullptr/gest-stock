@@ -11,7 +11,7 @@ const OrderCard = ({Data}) => {
                     <h1 className="font-bold text-[1.2em]">Commande ID : {Data?.id}</h1>
                 </div>
                 <div className="flex flex-row justify-between">
-                    <h2 className="text-[0.8em] text-gray-500">{Data?.dealer?.name} (ID : {Data?.dealer?.id})</h2>
+                    <h2 className="text-[0.8em] text-gray-500">{Data?.dealer?.name} • (ID : {Data?.dealer?.id})</h2>
                     <h2 className="text-[0.8em] text-gray-500">{Data?.dealer?.contact}</h2>
                 </div>
             </div>
@@ -21,8 +21,8 @@ const OrderCard = ({Data}) => {
                     <h1 className="font-bold text-[1.2em] text-end">{Data?.date_arrival}</h1>
                 </div>
                 <div className="flex flex-row justify-between space-y-2">
-                    <h2 className="text-[0.8em] text-gray-500">{Data?.product?.name} (ID : {Data?.product?.id})</h2>
-                    <h2 className="text-[0.8em] text-gray-500">x{Data?.quantity}({Data?.product?.quantity})</h2>
+                    <h2 className="text-[0.8em] text-gray-500">{Data?.product?.name} • (ID : {Data?.product?.id})</h2>
+                    <h2 className="text-[0.8em] text-gray-500">{Data?.quantity} pcs ({Data?.product?.quantity} pcs)</h2>
                 </div>
             </div>
             <div className="col-span-2 bg-gray-200 rounded-sm">
