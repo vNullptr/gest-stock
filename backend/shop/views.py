@@ -22,6 +22,12 @@ class ShopViewSet(viewsets.ModelViewSet):
         staff = Staff.objects.filter(shop=shop)
         serializer = ShopStaffSerialzer(staff, many=True)
         return Response(serializer.data)
+    
+    @action(detail=False, methods=['get'], url_path='count')
+    def count(self, request):
+        return Response({
+            "count": self.get_queryset().count()
+        })
 
 class StockViewSet(viewsets.ModelViewSet):
     queryset = Stock.objects.all()

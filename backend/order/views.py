@@ -1,3 +1,4 @@
+from rest_framework.response import Response
 from .models import Dealer, Order
 from .serializers import DealerSerializer, OrderCreateSerializer, OrderReadSerializer 
 from rest_framework import viewsets
@@ -15,6 +16,12 @@ class OrderViewSet(viewsets.ModelViewSet):
         if self.action == "create":
             return OrderCreateSerializer
         return OrderReadSerializer
+    
+    @action(detail=False, methods=['get'], url_path='count')
+    def count(self, request):
+        return Response({
+            "count": self.get_queryset().count()
+        })
         
         
         
