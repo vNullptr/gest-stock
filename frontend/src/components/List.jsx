@@ -47,6 +47,8 @@ const List = ({Headers, Data, editHandler}) => {
                 )
             })
         }
+
+        {Data.length > 0 || <div className="w-full text-center"> Chargement ... </div>}
     </div>
   )
 }

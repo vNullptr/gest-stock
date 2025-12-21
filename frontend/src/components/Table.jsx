@@ -49,7 +49,7 @@ const Table = ({Headers, Data, editHandler}) => {
             }
           </tbody>
         </table>
-        {Data.length > 0 || <div className="w-full text-center"> Fetching data ... </div>}
+        {Data.length > 0 || <div className="w-full text-center"> Chargement ... </div>}
       </div>
     </>
   )
