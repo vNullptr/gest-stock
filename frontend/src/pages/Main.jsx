@@ -35,10 +35,10 @@ const Main = () => {
   const [currentPage, setcurrentPage] = useState(0)
     const pages = [
       {name:"Tableau de bord", icon:homeIcon},
-      {name:"Inventaire", icon:inventoryIcon},
+      {name:"Produits", icon:inventoryIcon},
       {name:"Personnels", icon:userIcon},
       {name:"Magasins", icon:shopIcon},
-      {name:"Fournisseur", icon:supplierIcon},
+      {name:"Commandes", icon:supplierIcon},
     ]
     const compactPages = [
       Dashboard,
