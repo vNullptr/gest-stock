@@ -19,7 +19,7 @@ const Staff = () => {
     {label:"Nom", key:"last_name", width:17.5},
     {label:"Prénom", key:"first_name", width:17.5},  
     {label:"Role", key:"role", width:20, tag:true},
-    {label:"Magasin", key:"shop", width:20}
+    {label:"ID Magasin", key:"shop", width:20}
   ]
 
   useEffect(()=>{

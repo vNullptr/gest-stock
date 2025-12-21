@@ -17,7 +17,7 @@ const Inventory = () => {
   const productHeader = [
     {label:"ID", key:"id", width:10}, 
     {label:"Nom produit", key:"name" , width:40}, 
-    {label:"Catégorie", key:"category" , width:20, tag:true}, 
+    {label:"ID Catégorie", key:"category" , width:20, tag:true}, 
     {label:"Prix", key:"price" , width:15}, 
     {label:"Quantité", key:"quantity" , width:15}
   ]
