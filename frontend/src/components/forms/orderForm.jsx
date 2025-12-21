@@ -40,7 +40,6 @@ const OrderForm = () => {
 
     const handleConfirm = async (e) =>{
         e.preventDefault()
-        e.reset()
         const token = sessionStorage.getItem("session-token")
         if (token) {
             try {
@@ -59,44 +58,80 @@ const OrderForm = () => {
 
 
   return (
-    <>
     <form className="w-full" onSubmit={handleConfirm}>
-        <div className="flex flex-col space-y-2">
-            <div className="flex flex-row justify-between">
-                <select className="rounded-sm outline w-50 h-6 outline-gray-300" value={OrderData?.dealer} onChange={(e)=>{setOrderData(prev=>({...prev, dealer:Suppliers.find(s => s?.name === e.target.value)?.id}))}}>
-                    <option></option>
-                    {
-                        Suppliers.map(s =>{
-                            return <option>{s?.name}</option>
-                        })
-                    }
-                </select>
-                <button className="rounded-md bg-primary text-white px-1 hover:bg-[#ff9900] hover:scale-105 transition-all duration-200 flex items-center" type="submit">Commander</button>
-            </div>
-            <select className="rounded-sm outline w-50 h-6 outline-gray-300" value={OrderData?.shop} onChange={(e)=>{setOrderData(prev=>({...prev, shop:Shops.find(s => s?.name === e.target.value)?.id}))}}>
-                <option></option>
-                {
-                    Shops.map(s =>{
-                        return <option>{s?.name}</option>
-                    })
-                }
-            </select>
-            <div className="flex flex-row space-x-2">
-                <select className="rounded-sm outline w-50 h-6 outline-gray-300" value={OrderData?.product} onChange={(e)=>{setOrderData(prev=>({...prev, product:Products.find(p=> p?.name === e.target.value)?.id}))}}>
-                    <option></option>
-                    {
-                        Products.map(s=>{
-                            return <option>{s?.name}</option>
-                        })
-                    }
-                </select>
-                <input className="rounded-sm outline w-20 h-6 outline-gray-300 p-1" type="number" min="1" placeholder='Qte' value={OrderData?.quantity} onChange={(e)=>{setOrderData(prev=>({...prev, quantity:Number(e.target.value)}))}}></input>
+      <div className="flex flex-col space-y-2">
+        <div className="flex flex-row justify-between">
+          <select
+            className="rounded-sm outline w-50 h-6 outline-gray-300"
+            value={OrderData.dealer}
+            onChange={(e) =>
+              setOrderData((prev) => ({ ...prev, dealer: e.target.value }))
+            }
+          >
+            <option value="">Fournisseur</option>
+            {Suppliers.map((s) => (
+              <option key={s.id} value={s.id}>
+                {s.name}
+              </option>
+            ))}
+          </select>
 
-            </div>
+          <button
+            className="rounded-md bg-primary text-white px-1 hover:bg-[#ff9900] hover:scale-105 transition-all duration-200 flex items-center"
+            type="submit"
+          >
+            Commander
+          </button>
         </div>
+
+        <select
+          className="rounded-sm outline w-50 h-6 outline-gray-300"
+          value={OrderData.shop}
+          onChange={(e) =>
+            setOrderData((prev) => ({ ...prev, shop: e.target.value }))
+          }
+        >
+          <option value="">Magasin</option>
+          {Shops.map((s) => (
+            <option key={s.id} value={s.id}>
+              {s.name}
+            </option>
+          ))}
+        </select>
+
+        <div className="flex flex-row space-x-2">
+          <select
+            className="rounded-sm outline w-50 h-6 outline-gray-300"
+            value={OrderData.product}
+            onChange={(e) =>
+              setOrderData((prev) => ({ ...prev, product: e.target.value }))
+            }
+          >
+            <option value="">Produit</option>
+            {Products.map((p) => (
+              <option key={p.id} value={p.id}>
+                {p.name}
+              </option>
+            ))}
+          </select>
+
+          <input
+            className="rounded-sm outline w-20 h-6 outline-gray-300 p-1"
+            type="number"
+            min="1"
+            placeholder="Qte"
+            value={OrderData.quantity}
+            onChange={(e) =>
+              setOrderData((prev) => ({
+                ...prev,
+                quantity: Number(e.target.value),
+              }))
+            }
+          />
+        </div>
+      </div>
     </form>
-    </>
-  )
+  );
 }
 
 export default OrderForm
