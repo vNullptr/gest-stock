@@ -93,7 +93,7 @@ const Shop = () => {
                 </div>
             </div>
             <div className="bg-white rounded-sm shadow-sm col-span-1 h-full flex flex-col p-2">
-                <h1 className="text-3xl font-bold">Employe(e)s</h1>
+                <h1 className="text-3xl font-bold">Employé(e)s</h1>
                 <EmployeeList SelectedShop={SelectedShop}/>
             </div>
         </div>

@@ -14,7 +14,7 @@ const Staff = () => {
     {label:"ID", key:"id", width:5}, 
     {label:"Nom d'utilisateur", key:"username", width:15},
     {label:"Nom", key:"last_name", width:17.5},
-    {label:"Prenom", key:"first_name", width:17.5},  
+    {label:"Prénom", key:"first_name", width:17.5},  
     {label:"Role", key:"role", width:20, tag:true},
     {label:"Magasin", key:"shop", width:20}
   ]

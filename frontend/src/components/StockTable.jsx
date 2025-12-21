@@ -76,7 +76,7 @@ const StockTable = ({SelectedShop}) => {
                 <tr className="text-sm font-bold text-left text-gray-600 h-10 bg-tertiary">
                     <td className="pl-2 w-[10%] text-left">ID</td>
                     <td className="pl-2 w-[25%] text-left">Nom Produit</td>
-                    <td className="pl-2 w-[20%] text-left">Quantite</td>
+                    <td className="pl-2 w-[20%] text-left">Quantité</td>
                     <td className="pl-2 w-[20%] text-center">Total restant</td>
                 </tr>
             </thead>
