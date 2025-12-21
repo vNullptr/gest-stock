@@ -1,27 +1,121 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import api from '../api/axios'
 
 const Dashboard = () => {
+  const [totals, setTotals] = useState({
+    shops: 0,
+    products: 0,
+    orders: 0,
+    stockValue: 0,
+  })
+  const [recentOrders, setRecentOrders] = useState([])
+  const [topProducts, setTopProducts] = useState([])
 
-  const tableHead = ["head1","head2","head3","head4"]
-  /* dashboard will just have amounts of each stuff and a welcome text*/ 
+  const fetchTotals = async () => {
+    const token = sessionStorage.getItem('session-token')
+    if (!token) {
+      console.error("no session token")
+      return 
+    }
+
+    try {
+      const products = await api(token).get("/api/products/count")
+      const shop = await api(token).get("/api/shop/count")
+      const order = await api(token).get("/api/orders/count")
+
+      setTotals({ shops: shop.data?.count, products: products.data?.count, orders: order.data?.count})
+    } catch (err){
+      console.error(err)
+    }
+
+
+  }
+
+  const fetchRecentOrders = async () => {
+    const token = sessionStorage.getItem('session-token')
+    if (!token) {
+      console.error("no session token")
+      return 
+    }
+    
+    try {
+      const orders = await api(token).get(`/api/orders/`)
+      setRecentOrders(orders.data.slice(0, 3))
+    } catch (err){
+      console.error(err)
+    }
+
+  }
+
+  const fetchTopProducts = async () => {
+    const token = sessionStorage.getItem('session-token')
+    if (!token) {
+      console.error("no session token")
+      return 
+    }
+    
+    try {
+      const products = await api(token).get(`/api/products/`)
+      setTopProducts(products.data)
+    } catch (err){
+      console.error(err)
+    }
+  }
+
+  useEffect(()=>{
+    fetchTotals()
+    fetchRecentOrders()
+    fetchTopProducts()
+  },[])
+
   return (
-    <div className="p-5 flex flex-col">
+    <div className="p-5 flex flex-col space-y-4">
       <h1 className="font-bold text-2xl text-accent">Tableau de bord</h1>
-      <div className="flex flex-row gap-5">
-        <div className="flex-1 my-5 h-50 bg-white rounded-xl shadow-sm border-gray-100 flex flex-col justify-between p-5">
-          <span className="text-md  text-accent opacity-50 uppercase">Produits en stock</span>
-          <span className="text-6xl font-bold">3252</span>
-          <span className="text-xs text-gray-400">Total des produits actuellement present en stock</span>
+
+      <div className="grid grid-cols-3 gap-4">
+        <div className="bg-white rounded-sm shadow-sm p-4">
+          <div className="text-sm text-gray-500">Magasins</div>
+          <div className="text-2xl font-bold">{totals.shops}</div>
         </div>
-        <div className="flex-1 my-5 h-50 bg-white rounded-xl shadow-sm border-gray-100 flex flex-col justify-between p-5">
-          <span className="text-md  text-accent opacity-50 uppercase">Commandes en cours</span>
-          <span className="text-6xl font-bold">25</span>
-          <span className="text-xs text-gray-400">Total des commandes en cours de traitement</span>
+        <div className="bg-white rounded-sm shadow-sm p-4">
+          <div className="text-sm text-gray-500">Produits</div>
+          <div className="text-2xl font-bold">{totals.products}</div>
         </div>
-        <div className="flex-1 my-5 h-50 bg-white rounded-xl shadow-sm border-gray-100 flex flex-col justify-between p-5">
-          <span className="text-md  text-accent opacity-50 uppercase">Nombre de magasins actif</span>
-          <span className="text-6xl font-bold">12</span>
-          <span className="text-xs text-gray-400">Total des magasins ouvert au publique</span>
+        <div className="bg-white rounded-sm shadow-sm p-4">
+          <div className="text-sm text-gray-500">Commandes</div>
+          <div className="text-2xl font-bold">{totals.orders}</div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-3 gap-4">
+        <div className="col-span-2 bg-white rounded-sm shadow-sm p-4">
+          <div className="flex items-center justify-between mb-2">
+            <h2 className="font-bold">Commandes récentes</h2>
+          </div>
+          <div className="space-y-2">
+            {recentOrders.map(o => (
+              <div key={o.id} className="flex justify-between items-center border-b pb-2">
+                <div>
+                  <div className="font-medium">#{o.id} — {o.product?.name}</div>
+                  <div className="text-xs text-gray-500">{o.dealer?.name} • {o.quantity} pcs</div>
+                </div>
+                <div className="text-sm text-gray-600">{o.date_arrival}</div>
+              </div>
+            ))}
+            {recentOrders.length === 0 && <div className="text-sm text-gray-500">Aucune commande récente</div>}
+          </div>
+        </div>
+
+        <div className="bg-white rounded-sm shadow-sm p-4 overflow-y-scroll">
+          <h2 className="font-bold mb-2">Produits disponible</h2>
+          <div className="space-y-2">
+            {topProducts.map(p => (
+              <div key={p?.id} className="flex justify-between items-center">
+                <div className="text-sm">{p?.name}</div>
+                <div className="text-sm text-primary">{p?.quantity}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
