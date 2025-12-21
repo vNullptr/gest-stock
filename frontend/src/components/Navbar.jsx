@@ -12,7 +12,7 @@ const Navbar = (props) => {
     return (
         <div className="bg-white min-h-screen min-w-[150px]">
         <div className="h-[5%] p-3">
-            <div className="border border-accent w-[20px] h-[20px]"></div>
+            <h1 className="text-[0.8em] text-primary text-left font-extrabold mb-2.5">STOCK MANAGER</h1>
         </div>
         {props.pageList.map((e, index) => {
             const Icon = e.icon
