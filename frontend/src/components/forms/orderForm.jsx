@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useEffectEvent} from 'react'
 import api from '../../api/axios'
 import { useNavigate } from 'react-router-dom'
 
@@ -43,15 +43,12 @@ const OrderForm = () => {
         const token = sessionStorage.getItem("session-token")
         if (token) {
             try {
-                await api(token).post(`api/orders/`, OrderData)
-                setOrderData({quantity:1})
+                const response = await api(token).post(`api/orders/`, OrderData)
             } catch (err){
             console.error(err)
-            onClose()
             }
         } else {
             console.error("no session token")
-            onClose()
             navigate('/login')
         }
     }
@@ -65,12 +62,12 @@ const OrderForm = () => {
             className="rounded-sm outline w-50 h-6 outline-gray-300"
             value={OrderData.dealer}
             onChange={(e) =>
-              setOrderData((prev) => ({ ...prev, dealer: e.target.value }))
+              setOrderData((prev) => ({ ...prev, dealer: Number(e.target.value) }))
             }
           >
             <option value="">Fournisseur</option>
             {Suppliers.map((s) => (
-              <option key={s.id} value={s.id}>
+              <option key={s?.id} value={s?.id}>
                 {s.name}
               </option>
             ))}
@@ -88,7 +85,7 @@ const OrderForm = () => {
           className="rounded-sm outline w-50 h-6 outline-gray-300"
           value={OrderData.shop}
           onChange={(e) =>
-            setOrderData((prev) => ({ ...prev, shop: e.target.value }))
+            setOrderData((prev) => ({ ...prev, shop: Number(e.target.value) }))
           }
         >
           <option value="">Magasin</option>
@@ -104,7 +101,7 @@ const OrderForm = () => {
             className="rounded-sm outline w-50 h-6 outline-gray-300"
             value={OrderData.product}
             onChange={(e) =>
-              setOrderData((prev) => ({ ...prev, product: e.target.value }))
+              setOrderData((prev) => ({ ...prev, product: Number(e.target.value) }))
             }
           >
             <option value="">Produit</option>
