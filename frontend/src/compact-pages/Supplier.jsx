@@ -2,10 +2,12 @@ import React, {useState, useEffect} from 'react'
 import OrderForm from '../components/forms/orderForm'
 import OrderCard from '../components/OrderCard'
 import api from '../api/axios'
+import { useNavigate } from 'react-router-dom'
 
 const Supplier = () => {
 
     const [Orders, SetOrders] = useState([])
+    const navigate = useNavigate()
 
     useEffect(()=>{
         const fetchOrders = async ()=>{
@@ -35,6 +37,7 @@ const Supplier = () => {
                 {Orders.map(Order=>{
                     return <OrderCard Data={Order}/>
                 })}
+                {Orders.length > 0 || <div className="w-full text-center col-span-3"> Chargement ... </div>}
             </div>
         </div>
     </div>

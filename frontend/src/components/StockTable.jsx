@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import api from '../api/axios'
+import { useNavigate } from 'react-router-dom'
 
 const StockTable = ({SelectedShop}) => {
   
+    const navigate = useNavigate()
     const [Stock, setStock] = useState([])
     const [Products, setProducts] = useState([])
     const [Import, setImport] = useState(null)
@@ -19,6 +21,7 @@ const StockTable = ({SelectedShop}) => {
                 console.error(err)
             }
         } else {
+            navigate('/login')
             console.error("no session token")
         }
     }
@@ -37,6 +40,7 @@ const StockTable = ({SelectedShop}) => {
                 console.error(err)
             }
         } else {
+            navigate('/login')
             console.error("no session token")
         }
     }
@@ -50,6 +54,7 @@ const StockTable = ({SelectedShop}) => {
                 console.error(err)
             }
         } else {
+            navigate('/login')
             console.error("no session token")
         }
     }
@@ -65,6 +70,7 @@ const StockTable = ({SelectedShop}) => {
                 console.error(err)
             }
         } else {
+            navigate('/login')
             console.error("no session token")
         }
     }
@@ -97,6 +103,7 @@ const StockTable = ({SelectedShop}) => {
                 })}
             </tbody>
         </table>
+        {Stock.length > 0 || <div className="w-full text-center"> Chargement ... </div>}
         <div className="w-full mt-1 flex flex-row justify-center items-center">
             <select className="outline outline-gray-300 rounded-sm mx-2 w-30" onChange={(e)=>setImport(Products.find(p => e.target.value === p?.name)?.id)}>
                 <option></option>

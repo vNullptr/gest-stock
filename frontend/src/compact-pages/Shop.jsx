@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import api from '../api/axios'
 import StockTable from '../components/StockTable'
 import EmployeeList from '../components/EmployeeList'
+import { useNavigate } from 'react-router-dom'
 
 const Shop = () => {
 
-    const [Shops, setShops] = useState([
-        {id:1, name:"Shop #1", address:"Shop long ah description"},
-        {id:2, name:"Shop #2", address:"Shop long ah description"},
-    ])
+    const navigate = useNavigate()
+
+    const [Shops, setShops] = useState([])
     const [SelectedShop, setSelectedShop] = useState(1)
     const [Adding, setAdding] = useState(false)
     const [newShop, setnewShop] = useState({})
@@ -29,6 +29,7 @@ const Shop = () => {
         } else {
             console.error("no session token")
             setAdding(false)
+            navigate('/login')
         }
         }
 
@@ -52,6 +53,7 @@ const Shop = () => {
         } else {
             console.error("no session token")
             setAdding(false)
+            navigate('/login')
         }
         
 
@@ -83,6 +85,8 @@ const Shop = () => {
                         <p className="text-sm font-medium text-gray-600">{shop?.address}</p>
                     </div>)
                 })}
+
+                {Shops.length > 0 || <div className="w-full text-center col-span-3"> Chargement ... </div>}
             </div>
         </div>
         <div className="grid grid-cols-2 gap-2 mt-2 h-full">

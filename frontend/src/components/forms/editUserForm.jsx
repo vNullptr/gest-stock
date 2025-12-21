@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import api from '../../api/axios'
+import { useNavigate } from 'react-router-dom'
 
 const EditForm = ({currentUserId,onClose}) => {
+
+  const navigate = useNavigate()
 
   const [User, setUser] = useState({})
   const [Shops, setShops] = useState([])
@@ -28,6 +31,7 @@ const EditForm = ({currentUserId,onClose}) => {
       } else {
         console.error("no session token")
         onClose()
+        navigate('/login')
       }
     }
 
@@ -50,6 +54,7 @@ const EditForm = ({currentUserId,onClose}) => {
       } else {
         console.error("no session token")
         onClose()
+        navigate('/login')
       }
     }
 

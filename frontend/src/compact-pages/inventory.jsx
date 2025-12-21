@@ -4,8 +4,11 @@ import Window from '../components/Window.jsx'
 import api from '../api/axios.js'
 import EditForm from '../components/forms/editProductForm.jsx'
 import AddForm from '../components/forms/addProductForm.jsx'
+import { useNavigate } from 'react-router-dom'
 
 const Inventory = () => {
+
+  const navigate = useNavigate()
 
   const [selectedProduct, setselectedProduct] = useState(null)  
   const [Products, setProducts] = useState([])
@@ -33,10 +36,6 @@ const Inventory = () => {
         const catResponse = await api(token).get(`/api/categories`)
         setCategories(catResponse.data)
 
-        // idk if i should keep this here ? im just doing it now but if it causes issues will just remove it
-        /*setProducts(Products.map(v=>{
-          return {...v, category:Categories.length > 0 && v?.category && (Categories.find((v, i)=> v?.id == v?.category)?.name) }
-        }))*/
        response.data.map(v=>{
           return {...v, category:(catResponse.data.length > 0 && v?.category && (catResponse.data.find((v, i)=> v?.id == v?.category)?.name)) }
        })

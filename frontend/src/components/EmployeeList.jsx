@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import api from '../api/axios'
 import Staff from '../compact-pages/Staff'
+import { useNavigate } from 'react-router-dom'
 
 const EmployeeList = ({SelectedShop}) => {
 
+    const navigate = useNavigate()
     const [StaffList, setStaffList] = useState([])
 
     useEffect(()=>{
@@ -47,6 +49,7 @@ const EmployeeList = ({SelectedShop}) => {
                 </div>
             })}
         </div>
+        {StaffList.length > 0 || <div className="w-full text-center"> Chargement ... </div>}
     </>
   )
 }

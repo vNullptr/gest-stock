@@ -24,6 +24,7 @@ const UserBubble = () => {
                     console.error(err)
                 }
             } else {
+                navigate('/login')
                 console.error("no session token")
             }
         }
@@ -39,12 +40,13 @@ const UserBubble = () => {
                 const response = await api(token).post(`/auth/logout/`)
                 console.log(response.data)
                 sessionStorage.removeItem("session-token")
-                //navigate('/login')
+                navigate('/login')
                 
             }catch (err){
                 console.error(err)
             }
         } else {
+            navigate('/login')
             console.error("no session token")
         }   
     }

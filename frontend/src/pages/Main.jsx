@@ -21,10 +21,10 @@ const Main = () => {
           const response = await api(token).get('/auth/check')
         } catch (err){
           console.log("Invalid Token")
-          //navigate('/login')
+          navigate('/login')
         }
       } else {
-        //navigate('/login')
+        navigate('/login')
       }
   }
 

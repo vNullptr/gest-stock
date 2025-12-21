@@ -4,8 +4,11 @@ import api from '../api/axios'
 import Window from '../components/Window.jsx'
 import AddForm from '../components/forms/addUserForm.jsx'
 import EditForm from '../components/forms/editUserForm.jsx'
+import { useNavigate } from 'react-router-dom'
 
 const Staff = () => {
+
+  const navigate = useNavigate()
 
   const [StaffList, setStaffList] = useState([])
   const [Adding, setAdding] = useState(false)

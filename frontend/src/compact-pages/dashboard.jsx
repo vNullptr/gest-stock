@@ -1,7 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import api from '../api/axios'
+import { useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
+
+  const navigate = useNavigate()
+
   const [totals, setTotals] = useState({
     shops: 0,
     products: 0,
@@ -15,6 +19,7 @@ const Dashboard = () => {
     const token = sessionStorage.getItem('session-token')
     if (!token) {
       console.error("no session token")
+      navigate("/login")
       return 
     }
 
@@ -35,6 +40,7 @@ const Dashboard = () => {
     const token = sessionStorage.getItem('session-token')
     if (!token) {
       console.error("no session token")
+      navigate("/login")
       return 
     }
     
@@ -51,6 +57,7 @@ const Dashboard = () => {
     const token = sessionStorage.getItem('session-token')
     if (!token) {
       console.error("no session token")
+      navigate("/login")
       return 
     }
     
