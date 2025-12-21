@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import api from '../api/axios'
+import StockTable from '../components/StockTable'
+import EmployeeList from '../components/EmployeeList'
 
 const Shop = () => {
 
@@ -18,6 +20,8 @@ const Shop = () => {
             try {
                 const shopResponse = await api(token).get(`/api/shop/`)
                 setShops(shopResponse.data)
+                setSelectedShop(shopResponse.data[0]?.id)
+                
             }catch (err){
                 console.error(err)
                 setAdding(false)
@@ -82,11 +86,15 @@ const Shop = () => {
             </div>
         </div>
         <div className="grid grid-cols-2 gap-2 mt-2 h-full">
-            <div className="bg-white rounded-sm shadow-sm col-span-1 h-full">
-
+            <div className="bg-white rounded-sm shadow-sm col-span-1 h-full flex flex-col p-2">
+                <h1 className="text-3xl font-bold">Stock</h1>
+                <div className="mt-2 overflow-y-scroll">
+                    <StockTable SelectedShop={SelectedShop}/>
+                </div>
             </div>
-            <div className="bg-white rounded-sm shadow-sm col-span-1 h-full">
-
+            <div className="bg-white rounded-sm shadow-sm col-span-1 h-full flex flex-col p-2">
+                <h1 className="text-3xl font-bold">Employe(e)s</h1>
+                <EmployeeList SelectedShop={SelectedShop}/>
             </div>
         </div>
     </div>

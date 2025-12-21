@@ -35,7 +35,7 @@ const AddForm = ({onClose}) => {
 
   const clickHandler = ()=>{
 
-    const patchUser = async () =>{
+    const postUser = async () =>{
       const token = sessionStorage.getItem("session-token")
       if (token) {
         try {
@@ -51,7 +51,7 @@ const AddForm = ({onClose}) => {
       }
     }
 
-    patchUser()
+    postUser()
   }
 
   return (

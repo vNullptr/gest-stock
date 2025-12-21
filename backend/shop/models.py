@@ -19,3 +19,8 @@ class Stock(models.Model):
         related_name="stocks"
     )
     
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['product', 'shop'], name='unique_product_shop')
+        ]
+    
