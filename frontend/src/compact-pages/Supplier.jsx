@@ -13,7 +13,6 @@ const Supplier = () => {
             if (token) {
                 try {
                     const response = await api(token).get(`/api/orders/`)
-                    console.log(response.data[0])
                     SetOrders(response.data)
                 } catch (err){
                     console.error(err)
