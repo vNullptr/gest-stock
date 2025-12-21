@@ -61,6 +61,28 @@ const EditForm = ({currentUserId,onClose}) => {
     patchUser()
   }
 
+  const deleteHandler = ()=>{
+
+    const deleteUser = async () =>{
+      const token = sessionStorage.getItem("session-token")
+      if (token) {
+        try {
+          await api(token).delete(`/api/staff/${currentUserId}/`)
+          onClose()
+        }catch (err){
+          console.error(err)
+          onClose()
+        }
+      } else {
+        console.error("no session token")
+        onClose()
+        navigate('/login')
+      }
+    }
+
+    deleteUser()
+  }
+
   return (
     <div className="w-full h-full p-5 flex flex-col">
       <div className="w-full h-full flex flex-col py-5 items-center">
@@ -116,6 +138,7 @@ const EditForm = ({currentUserId,onClose}) => {
           
 
           <div className="w-full h-13 flex flex-row items-center justify-end space-x-2 mt-5">
+            <button className="rounded-md ring text-red-500  h-8 w-20 ring-red-500 hover:scale-105 transition-all duration-200" type="button" onClick={deleteHandler}>Supprimer</button>
             <button className="rounded-md ring text-primary  h-8 w-20 ring-primary hover:scale-105 transition-all duration-200" type="button" onClick={onClose}>Annuler</button>
             <button className="rounded-md bg-primary text-white  h-8 w-20 hover:bg-[#ff9900] hover:scale-105 transition-all duration-200" type="button" onClick={clickHandler}>Modifier</button>
           </div>
